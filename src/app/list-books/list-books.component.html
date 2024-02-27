@@ -1,3 +1,5 @@
+<h2>Liste des livres disponibles :</h2>
+<app-search-book></app-search-book>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -6,6 +8,7 @@
             <th>Auteur</th>
             <th>Date de publication</th>
             <th>Prix</th>
+            <th>Détails</th>
         </tr>
     </thead>
     <tbody>
@@ -13,8 +16,16 @@
             <td>{{b.id}}</td>
             <td>{{b.title}}</td>
             <td>{{b.author}}</td>
-            <td>{{b.datePublication}}</td>
+            <td>{{b.publishDate}}</td>
             <td>{{b.price}}</td>
+            <td><button class="btn btn-info" (click)="showBookDetails(b)">Afficher les détails</button></td>
         </tr>
     </tbody>
 </table>
+
+
+<app-detail-book 
+[book]="selectedBook"  
+*ngIf="selectedBook !== undefined"
+(hideChild)="hideBookDetails()"
+></app-detail-book>

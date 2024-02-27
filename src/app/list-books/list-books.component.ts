@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Book } from '../model/book';
 
 @Component({
   selector: 'app-list-books',
@@ -6,9 +7,39 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-books.component.css']
 })
 export class ListBooksComponent {
+  selectedBook? : Book;
   books = [
-    {id : 1, title : 'Power of habits', author : 'Charles Duhigg', datePublication : '1/1/2010', price : 19.50},
-    {id : 2, title : 'Power of habits', author : 'Charles Duhigg', datePublication : '1/1/2010', price : 19.50},
-    {id : 3, title : 'Power of habits', author : 'Charles Duhigg', datePublication : '1/1/2010', price : 19.50},
+    new Book(
+      1, 
+      "https://m.media-amazon.com/images/I/71wm29Etl4L._SY466_.jpg", 
+      'Power of habits', 
+      'Charles Duhigg', 
+      new Date(2010,0,1), 
+      19.50
+    ),
+    new Book(
+      2, 
+      "https://m.media-amazon.com/images/I/513Y5o-DYtL.jpg",
+      'Atomic Habits', 
+      'James Clear', 
+      new Date (2009,0,1), 
+      22.50
+    ),
+    new Book(
+      3, 
+      "https://m.media-amazon.com/images/I/71Bs0wqcZ3L._SY466_.jpg",
+      'The slight Edge', 
+      'Jeff Olsen', 
+      new Date(1998,0,10), 
+      18.50
+    )
   ]
+
+  showBookDetails(b : Book){
+    this.selectedBook = b;
+  }
+
+  hideBookDetails(){
+    this.selectedBook = undefined;
+  }
 }

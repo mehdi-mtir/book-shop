@@ -1,0 +1,11 @@
+<form class="row g-3">
+    <div class="col-auto">
+        <label for="search">Mot clé :</label>
+    </div>
+    <div class="col-auto"> 
+        <input type="text" class="form-control" id="search" #search />
+    </div>
+    <div class="col-auto">
+        <button type="button" class="btn btn-primary" (click)="searchBook(search.value)">Rechercher</button>
+    </div>
+</form>
