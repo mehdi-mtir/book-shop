@@ -1,3 +1,8 @@
 <div class="container">
-  <app-list-books></app-list-books>
+  <ul>
+    <li routerLink="/books">Liste des livres</li>
+    <li routerLink="/books/add">Ajouter un livre</li>
+    <li routerLink="/books/edit">Editer un livre</li>
+  </ul>
+  <router-outlet></router-outlet>
 </div>
