@@ -33,7 +33,9 @@ export class ListBooksComponent {
       new Date(1998,0,10), 
       18.50
     )
-  ]
+  ];
+
+  filteredBooks? : Book[];
 
   showBookDetails(b : Book){
     this.selectedBook = b;
@@ -41,5 +43,11 @@ export class ListBooksComponent {
 
   hideBookDetails(){
     this.selectedBook = undefined;
+  }
+
+  filterBooks(keyword : string){
+    this.filteredBooks = this.books.filter(
+      b=>b.title.toLowerCase().includes(keyword.toLowerCase())
+    );
   }
 }

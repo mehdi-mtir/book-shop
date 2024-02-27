@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-book',
@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-book.component.css']
 })
 export class SearchBookComponent {
+  @Output() searchBookEvent = new EventEmitter<string>();
 
   searchBook(keyword : string){
     console.log(keyword);
+    this.searchBookEvent.emit(keyword);
   }
 }

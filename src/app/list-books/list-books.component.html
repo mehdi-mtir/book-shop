@@ -1,5 +1,5 @@
 <h2>Liste des livres disponibles :</h2>
-<app-search-book></app-search-book>
+<app-search-book (searchBookEvent)="filterBooks($event)"></app-search-book>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -12,11 +12,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let b of books">
+        <tr *ngFor="let b of filteredBooks?filteredBooks:books">
             <td>{{b.id}}</td>
             <td>{{b.title}}</td>
             <td>{{b.author}}</td>
-            <td>{{b.publishDate}}</td>
+            <td>{{b.publishDate.toLocaleDateString()}}</td>
             <td>{{b.price}}</td>
             <td><button class="btn btn-info" (click)="showBookDetails(b)">Afficher les détails</button></td>
         </tr>
