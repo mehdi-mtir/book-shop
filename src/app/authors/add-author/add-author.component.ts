@@ -16,9 +16,8 @@ export class AddAuthorComponent {
 
   addAuthor(f : NgForm){
     //console.log(f);
-    const id = this.authorService.getLastId() + 1;
-    const author = new Author(id, f.value.firstName, f.value.lastName);
-    this.authorService.addAuthor(author);
+    
+    this.authorService.addAuthor(f.value.firstName, f.value.lastName);
     this.router.navigate(['/authors']);
   }
 

@@ -1,4 +1,10 @@
 export class Book {
+    public get authorId(): number {
+        return this._authorId;
+    }
+    public set authorId(value: number) {
+        this._authorId = value;
+    }
     public get id(): number {
         return this._id;
     }
@@ -17,12 +23,7 @@ export class Book {
     public set title(value: string) {
         this._title = value;
     }
-    public get author(): string {
-        return this._author;
-    }
-    public set author(value: string) {
-        this._author = value;
-    }
+    
     public get publishDate(): Date {
         return this._publishDate;
     }
@@ -40,7 +41,7 @@ export class Book {
         private _id: number,
         private _cover: string,
         private _title: string,
-        private _author: string,
+        private _authorId: number,
         private _publishDate: Date,
         private _price: number = 0.0
     ){}
