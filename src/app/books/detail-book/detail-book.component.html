@@ -4,10 +4,10 @@
       <h5 class="card-title">{{book!.title}}</h5>
       <p class="card-text">
         Auteur : {{book!.author}} <br/>
-        Date de publication : {{book!.publishDate.toLocaleDateString()}}<br/>
+        Date de publication : {{book!.publishDate | date : 'dd/MM/yy'}}<br/>
         <!--{{selectedBook.publishDate.getDay()}}/{{selectedBook.publishDate.getMonth() + 1}}/{{selectedBook.publishDate.getFullYear()}} -->
         Prix : {{book!.price}}
       </p>
-      <a href="#" class="btn btn-primary" (click)="hideDetails()">Cacher les détails</a>
+      <button class="btn btn-primary" (click)="hideDetails()">Cacher les détails</button>
     </div>
   </div>

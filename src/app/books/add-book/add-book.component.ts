@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { BookService } from '../services/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
@@ -6,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent {
+  constructor(private bookService : BookService, private router : Router){}
+
+  addBook(f : NgForm){
+    this.bookService.addBook(f.value.title, f.value.author, f.value.cover, f.value.publishDate, f.value.price);
+    this.router.navigate(['/books']);
+  }
 
 }

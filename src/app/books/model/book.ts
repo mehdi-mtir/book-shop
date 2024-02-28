@@ -42,6 +42,6 @@ export class Book {
         private _title: string,
         private _author: string,
         private _publishDate: Date,
-        private _price: number
+        private _price: number = 0.0
     ){}
 }

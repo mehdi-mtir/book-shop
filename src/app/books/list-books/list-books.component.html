@@ -1,5 +1,7 @@
 <h2>Liste des livres disponibles :</h2>
 <app-search-book (searchBookEvent)="filterBooks($event)"></app-search-book>
+<br/>
+<button class="btn btn-success" routerLink="/books/add">Ajouter un livre</button>
 <table class="table table-striped">
     <thead>
         <tr>

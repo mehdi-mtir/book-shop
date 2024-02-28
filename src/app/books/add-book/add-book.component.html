@@ -1,1 +1,32 @@
-<p>add-book works!</p>
+<h2>Ajouter un nouveau livre</h2>
+<form (ngSubmit)="addBook(f)" #f="ngForm">
+    <div class="mb-3">
+        <label for="title" class="form-label">Titre *</label>
+        <input type="text" class="form-control" id="title" name="title" ngModel required #title="ngModel" >
+        <span class="erreur" *ngIf="title.invalid && title.touched">Le champ titre est obligatoire</span>
+    </div>
+    <div class="mb-3">
+        <label for="cover" class="form-label">URL Couverture *</label>
+        <input type="text" class="form-control" id="cover" name="cover" ngModel required #cover="ngModel">
+        <span class="erreur" *ngIf="cover.invalid && cover.touched">Le champ titre est obligatoire</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Auteur *</label>
+        <input type="text" class="form-control" id="author" name="author" ngModel required #author="ngModel">
+        <span class="erreur" *ngIf="author.invalid && author.touched">Le champ titre est obligatoire</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="publishDate" class="form-label">Date de publication *</label>
+        <input type="date" class="form-control" id="publishDate" name="publishDate" ngModel required #publishDate="ngModel">
+        <span class="erreur" *ngIf="publishDate.invalid && publishDate.touched">Le champ titre est obligatoire</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Prix</label>
+        <input type="text" class="form-control" id="price" name="price" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+    <div>* : Champ obligatoire</div>
+</form>

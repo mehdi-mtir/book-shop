@@ -38,6 +38,15 @@ export class BookService {
     return [...this.books]; //retourner une copie du tableau books
   }
 
+  getLastId(){
+    return this.books[this.books.length-1].id;
+  }
+
+  addBook(title : string, author : string, cover : string, publishDate : Date, price : number){
+    const book = new Book(this.getLastId()+1, cover, title, author, publishDate, price);
+    this.books = [...this.books, book];
+  }
+
 
 
 
