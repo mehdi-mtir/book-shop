@@ -1,1 +1,18 @@
-<p>list-authors works!</p>
+<h2>Liste des auteurs </h2>
+<button class="btn btn-success" [routerLink]="['/authors', 'add']">Ajouter un auteur</button>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let author of authors">
+        <th scope="row">{{author.id}}</th>
+        <td>{{author.firstName}}</td>
+        <td>{{author.lastName}}</td>
+      </tr>
+    </tbody>
+</table>

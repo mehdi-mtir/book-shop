@@ -5,6 +5,7 @@ import { AuthorsRoutingModule } from './authors-routing.module';
 import { ListAuthorsComponent } from './list-authors/list-authors.component';
 import { AddAuthorComponent } from './add-author/add-author.component';
 import { EditAuthorComponent } from './edit-author/edit-author.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EditAuthorComponent } from './edit-author/edit-author.component';
   ],
   imports: [
     CommonModule,
-    AuthorsRoutingModule
+    AuthorsRoutingModule,
+    FormsModule //Le module responsable des Template-Driven Form
   ]
 })
 export class AuthorsModule { }

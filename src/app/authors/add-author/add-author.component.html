@@ -1,1 +1,15 @@
-<p>add-author works!</p>
+<h2>Ajouter un nouvel auteur</h2>
+
+<form (ngSubmit)="addAuthor(f)" #f="ngForm">
+    <div class="mb-3">
+        <label for="firstName" class="form-label">Prénom</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" ngModel required #first="ngModel">
+        <span class="erreur" *ngIf="first.invalid && first.touched">Le champ Prénom est obligatoire</span>
+    </div>
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" ngModel required #last="ngModel">
+        <span class="erreur" *ngIf="last.invalid && last.touched">Le champ Nom est obligatoire</span>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+</form>

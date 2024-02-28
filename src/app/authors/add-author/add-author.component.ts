@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-author',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-author.component.css']
 })
 export class AddAuthorComponent {
+
+  addAuthor(f : NgForm){
+    console.log(f);
+  }
 
 }

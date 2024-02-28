@@ -16,7 +16,7 @@
             <td>{{b.id}}</td>
             <td>{{b.title}}</td>
             <td>{{b.author}}</td>
-            <td>{{b.publishDate.toLocaleDateString()}}</td>
+            <td>{{b.publishDate | date : 'dd/MM/yy'}}</td>
             <td>{{b.price}}</td>
             <td><button class="btn btn-info" (click)="showBookDetails(b)">Afficher les détails</button></td>
         </tr>
