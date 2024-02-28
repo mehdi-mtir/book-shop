@@ -13,8 +13,12 @@
     </div>
     <div class="mb-3">
         <label for="author" class="form-label">Auteur *</label>
-        <input type="text" class="form-control" id="author" name="author" ngModel required #author="ngModel">
-        <span class="erreur" *ngIf="author.invalid && author.touched">Le champ titre est obligatoire</span>
+        <!--input type="text" class="form-control" id="author" name="author" ngModel required #author="ngModel"-->
+        <select id="authorId" name="authorId" ngModel required #author="ngModel" class="form-control">
+            <option value="">--Veuillez sélectionner un auteur--</option>
+            <option *ngFor="let author of authors" [value]="author.id">{{author.firstName + ' ' + author.lastName}}</option>
+        </select>
+        <span class="erreur" *ngIf="author.invalid && author.touched">Le champ Auteur est obligatoire</span>
 
     </div>
     <div class="mb-3">

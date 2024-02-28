@@ -14,10 +14,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let b of filteredBooks?filteredBooks:books">
+        <tr *ngFor="let b of filteredBooks?filteredBooks:booksToDisplay">
             <td>{{b.id}}</td>
             <td>{{b.title}}</td>
-            <td>{{b.authorId}}</td>
+            <td>{{b.author}}</td>
             <td>{{b.publishDate | date : 'dd/MM/yy'}}</td>
             <td>{{b.price}}</td>
             <td><button class="btn btn-info" (click)="showBookDetails(b)">Afficher les détails</button></td>

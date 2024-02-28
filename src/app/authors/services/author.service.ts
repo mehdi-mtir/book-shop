@@ -17,6 +17,11 @@ export class AuthorService {
     return [...this.authors];
   }
 
+  getAuthorFullName(id : number){
+    const author = this.authors.find(a=>a.id === id);
+    return author?.firstName + " " + author?.lastName
+  }
+
   getLastId(){
     return this.authors[this.authors.length - 1].id
   }

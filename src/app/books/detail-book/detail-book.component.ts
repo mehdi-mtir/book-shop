@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Book } from '../model/book';
+import { IBookToDisplay } from '../model/ibook-to-display';
+
 
 @Component({
   selector: 'app-detail-book',
@@ -7,7 +8,7 @@ import { Book } from '../model/book';
   styleUrls: ['./detail-book.component.css']
 })
 export class DetailBookComponent {
-  @Input() book? : Book;
+  @Input() book? : IBookToDisplay;
   @Output() hideChild = new EventEmitter();
 
   hideDetails(){
