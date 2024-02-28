@@ -15,4 +15,14 @@ export class AuthorService {
   getAuthors(){
     return [...this.authors];
   }
+
+  getLastId(){
+    return this.authors[this.authors.length - 1].id
+  }
+
+  //addAuthor
+  addAuthor(author : Author){
+    //this.authors.push(author);
+    this.authors = [...this.authors, author];
+  }
 }
