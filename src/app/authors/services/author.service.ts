@@ -17,8 +17,12 @@ export class AuthorService {
     return [...this.authors];
   }
 
+  getAuthorById(id : number){
+    return this.authors.find(a=>a.id === id);
+  }
+
   getAuthorFullName(id : number){
-    const author = this.authors.find(a=>a.id === id);
+    const author = this.getAuthorById(id);
     return author?.firstName + " " + author?.lastName
   }
 
@@ -31,5 +35,11 @@ export class AuthorService {
     //this.authors.push(author);
     const author = new Author(this.getLastId()+1, firstName, lastName);
     this.authors = [...this.authors, author];
+  }
+
+  editAuthor(author : Author){
+    this.authors = this.authors.map(
+      a=>a.id===author.id?author:a
+    );
   }
 }

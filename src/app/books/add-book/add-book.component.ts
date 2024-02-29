@@ -19,7 +19,7 @@ export class AddBookComponent implements OnInit {
   
 
   addBook(f : NgForm){
-    this.bookService.addBook(f.value.title, f.value.authorId, f.value.cover, f.value.publishDate, f.value.price);
+    this.bookService.addBook(f.value.title, +f.value.authorId, f.value.cover, f.value.publishDate, +f.value.price);
     this.router.navigate(['/books']);
   }
 

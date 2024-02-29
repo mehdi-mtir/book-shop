@@ -7,7 +7,7 @@ import { EditAuthorComponent } from './edit-author/edit-author.component';
 const routes: Routes = [
   {path : "", component : ListAuthorsComponent},
   {path : "add", component : AddAuthorComponent},
-  {path : "edit", component : EditAuthorComponent}
+  {path : "edit/:id", component : EditAuthorComponent}
 ];
 
 @NgModule({
