@@ -1,1 +1,36 @@
-<p>edit-book works!</p>
+<h2>Editer livre</h2>
+<form (ngSubmit)="editBook(f)" #f="ngForm">
+    <div class="mb-3">
+        <label for="title" class="form-label">Titre *</label>
+        <input type="text" class="form-control" id="title" name="title" ngModel required #title="ngModel" [(ngModel)]="book!.title" >
+        <span class="erreur" *ngIf="title.invalid && title.touched">Le champ titre est obligatoire</span>
+    </div>
+    <div class="mb-3">
+        <label for="cover" class="form-label">URL Couverture *</label>
+        <input type="text" class="form-control" id="cover" name="cover" ngModel required #cover="ngModel" [(ngModel)]="book!.cover">
+        <span class="erreur" *ngIf="cover.invalid && cover.touched">Le champ titre est obligatoire</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="authorId" class="form-label">Auteur *</label>
+        <!--input type="text" class="form-control" id="author" name="author" ngModel required #author="ngModel"-->
+        <select id="authorId" name="authorId" ngModel required #author="ngModel" class="form-control" [(ngModel)]="book!.authorId">
+            <option value="">--Veuillez sélectionner un auteur--</option>
+            <option *ngFor="let author of authors" [value]="author.id">{{author.firstName + ' ' + author.lastName}}</option>
+        </select>
+        <span class="erreur" *ngIf="author.invalid && author.touched">Le champ Auteur est obligatoire</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="publishDate" class="form-label">Date de publication *</label>
+        <input type="date" class="form-control" id="publishDate" name="publishDate" required #publishDate="ngModel" [ngModel]="book!.publishDate | date : 'yyyy-MM-dd'">
+        <span class="erreur" *ngIf="publishDate.invalid && publishDate.touched">Le champ titre est obligatoire</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Prix</label>
+        <input type="text" class="form-control" id="price" name="price" ngModel [(ngModel)]="book!.price">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+    <div>* : Champ obligatoire</div>
+</form>

@@ -38,6 +38,10 @@ export class BookService {
     return [...this.books]; //retourner une copie du tableau books
   }
 
+  getBookById(id : number){
+    return this.books.find(b=>b.id === id);
+  }
+
   getLastId(){
     return this.books[this.books.length-1].id;
   }
@@ -47,7 +51,11 @@ export class BookService {
     this.books = [...this.books, book];
   }
 
-
+  editBook(book : Book){
+    this.books = this.books.map(
+      b=>b.id === book.id?book:b
+    );
+  }
 
 
 

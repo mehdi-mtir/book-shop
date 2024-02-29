@@ -26,7 +26,10 @@ export class EditAuthorComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       parametres => {
         const id = parametres['id'];
-        this.author = this.authorService.getAuthorById(+id)
+        if(this.authorService.getAuthorById(+id) !== undefined)
+          this.author = this.authorService.getAuthorById(+id);
+        else
+          this.router.navigate(['/authors']);
       });
       /*{
         next : parametres => console.log(parametres['id']),
