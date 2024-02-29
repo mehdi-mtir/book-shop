@@ -26,7 +26,7 @@ export class EditBookComponent implements OnInit {
   editBook(f : NgForm){
     //console.log(f.value.publishDate);
     this.book!.publishDate = f.value.publishDate;
-    this.book!.authorId = +this.book!.authorId;
+    this.book!.authorId = Number(this.book!.authorId);
     this.book!.price = +this.book!.price;
     this.bookService.editBook(this.book!);
     this.router.navigate(['/books']);

@@ -16,7 +16,7 @@
         <td>{{author.firstName}}</td>
         <td>{{author.lastName}}</td>
         <td><button class="btn btn-primary" [routerLink]="['/authors', 'edit', author.id]">Editer</button></td>
-        <td><button class="btn btn-danger">Supprimer</button></td>
+        <td><button class="btn btn-danger" (click)="deleteAuthor(author.id)">Supprimer</button></td>
       </tr>
     </tbody>
 </table>
