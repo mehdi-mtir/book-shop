@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../model/book';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  private books = [
+  private books : Book[] = [];
+  
+  /*private books = [
     new Book(
       1, 
       "https://m.media-amazon.com/images/I/71wm29Etl4L._SY466_.jpg", 
@@ -30,12 +34,24 @@ export class BookService {
       new Date(1998,0,10), 
       18.50
     )
-  ];
+  ];*/
 
-  constructor() { }
+  booksUpdated = new Subject<Book[]>();
+
+  constructor(private http : HttpClient) { }
+
+  /*getBooks(){
+    return [...this.books]; //retourner une copie du tableau books
+  }*/
 
   getBooks(){
-    return [...this.books]; //retourner une copie du tableau books
+    this.http.get<Book[]>("https://localhost:7190/api/Books").subscribe(
+      books => {
+        this.books = books;
+        console.log(this.books);
+        this.booksUpdated.next([...this.books]);
+      }
+    );
   }
 
   getBookById(id : number){
@@ -55,6 +71,11 @@ export class BookService {
     this.books = this.books.map(
       b=>b.id === book.id?book:b
     );
+  }
+
+  deleteBook(id : number){
+    this.books = this.books.filter(b=>b.id !== id);
+    this.booksUpdated.next([...this.books]);
   }
 
 

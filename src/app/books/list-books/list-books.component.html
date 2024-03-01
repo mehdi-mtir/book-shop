@@ -24,7 +24,7 @@
             <td>{{b.price}}</td>
             <td><button class="btn btn-info" (click)="showBookDetails(b)">Afficher les détails</button></td>
             <td><button class="btn btn-primary" [routerLink]="['/books', 'edit', b.id]">Editer</button></td>
-            <td><button class="btn btn-danger">Supprimer</button></td>
+            <td><button class="btn btn-danger" (click)="deleteBook(b.id)">Supprimer</button></td>
         </tr>
     </tbody>
 </table>

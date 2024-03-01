@@ -8,6 +8,7 @@ import { SearchBookComponent } from './search-book/search-book.component';
 import { DetailBookComponent } from './detail-book/detail-book.component';
 import { ListBooksComponent } from './list-books/list-books.component';
 import { FormsModule } from '@angular/forms';
+import { BookItemComponent } from './book-item/book-item.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     DetailBookComponent,
     SearchBookComponent,
     AddBookComponent,
-    EditBookComponent
+    EditBookComponent,
+    BookItemComponent
   ],
   imports: [
     CommonModule,
