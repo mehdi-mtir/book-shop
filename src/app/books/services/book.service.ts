@@ -81,6 +81,7 @@ export class BookService {
       )
       .subscribe(
         book => {
+          console.log(book);
           this.books.push(book);
           this.booksUpdated.next([...this.books]);
         }
