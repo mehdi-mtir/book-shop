@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../model/book';
 import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +37,7 @@ export class BookService {
   ];*/
 
   booksUpdated = new Subject<Book[]>();
+  baseUrl = "https://localhost:7190/api/Books";
 
   constructor(private http : HttpClient) { }
 
@@ -45,7 +46,7 @@ export class BookService {
   }*/
 
   getBooks(){
-    this.http.get<Book[]>("https://localhost:7190/api/Books").subscribe(
+    this.http.get<Book[]>(this.baseUrl).subscribe(
       books => {
         this.books = books;
         console.log(this.books);
@@ -63,9 +64,34 @@ export class BookService {
   }
 
   addBook(title : string, authorId : number, cover : string, publishDate : Date, price : number){
+    const options = {
+      headers: new HttpHeaders(
+        { 'content-type': 'application/json'}
+      )
+    };
+    this.http.post<Book>(
+      this.baseUrl,
+      JSON.stringify({
+        Title : title,
+        PublishDate : publishDate,
+        Price : price,
+        AuthorId : authorId
+      }),
+      options
+      )
+      .subscribe(
+        book => {
+          this.books.push(book);
+          this.booksUpdated.next([...this.books]);
+        }
+      )
+  }
+
+  /*addBook(title : string, authorId : number, cover : string, publishDate : Date, price : number){
     const book = new Book(this.getLastId()+1, cover, title, authorId, publishDate, price);
     this.books = [...this.books, book];
-  }
+  }*/
+
 
   editBook(book : Book){
     this.books = this.books.map(
