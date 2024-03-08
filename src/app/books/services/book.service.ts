@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Book } from '../model/book';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -39,18 +40,33 @@ export class BookService {
   booksUpdated = new Subject<Book[]>();
   baseUrl = "https://localhost:7190/api/Books";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private router : Router) { }
 
   /*getBooks(){
     return [...this.books]; //retourner une copie du tableau books
   }*/
 
   getBooks(){
-    this.http.get<Book[]>(this.baseUrl).subscribe(
-      books => {
-        this.books = books;
-        console.log(this.books);
-        this.booksUpdated.next([...this.books]);
+    const options = {
+      headers: new HttpHeaders(
+        { 
+          'content-type': 'application/json',
+          'authorization' : 'Bearer ' + localStorage.getItem('token') || ''
+        }
+      )
+    };
+    this.http.get<Book[]>(this.baseUrl,options).subscribe(
+      {
+        next : books => {
+          this.books = books;
+          console.log(this.books);
+          this.booksUpdated.next([...this.books]);
+        },
+        error : error => {
+          if(error.status == 401)
+            this.router.navigate(["/"])
+          console.log(error)
+        }
       }
     );
   }
@@ -66,7 +82,10 @@ export class BookService {
   addBook(title : string, authorId : number, cover : string, publishDate : Date, price : number){
     const options = {
       headers: new HttpHeaders(
-        { 'content-type': 'application/json'}
+        { 
+          'content-type': 'application/json',
+          'authorization' : 'Bearer ' + localStorage.getItem('token') || ''
+        }
       )
     };
     this.http.post<Book>(
